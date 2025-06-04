@@ -77,6 +77,6 @@ class Person {
             }
         }
         return members;
-    }
+    }//finalize
 
 }
