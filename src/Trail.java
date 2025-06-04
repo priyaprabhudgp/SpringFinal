@@ -1,6 +1,9 @@
 import java.util.Random;
 import java.util.Scanner;
 
+/**
+ * Trail Class that has all events that happen as user travels the trail
+ */
 class Trail {
 
 
@@ -8,6 +11,9 @@ class Trail {
     public int CurrentStop = 0;
     public int TotalDays = 0;
 
+    /**
+     * Trail Constructor - defines locations
+     */
     public Trail() {
         Locations = new String[]
                 {
@@ -21,7 +27,10 @@ class Trail {
 
     }
 
-
+    /**
+     * Third Option Method - Different possibilities to show luck on trail
+     * @param person - leader
+     */
     public void TakeAChance(Person person) {
         Random random = new Random();
 
@@ -34,12 +43,12 @@ class Trail {
                 if (person.food < 0) {
                     System.out.println("You run out of blood. ");
                     KillAPerson(person);
-
+                    //Cannot have negative food!
                     person.food = 0;
                 }
             } else {
                 int newAmmuntofFood = person.food + foundFood;
-
+                //Checks to keep blood under limit
                 if (newAmmuntofFood > 600) {
                     person.food = 600;
                 } else {
@@ -62,9 +71,14 @@ class Trail {
                     person.oxen -= GenerateRandomNumber(1, 3);
                     System.out.println("You stepped on another vampire clan's hunting ground, and they saw Edward and Bella trying to recreate the Spider-Monkey Scene. Oh my you have to give up some oxen.");
                 } else {
-                    System.out.println("You think about your emergency supply oxen.");
+                    Scanner temp = new Scanner(System.in);
+                    System.out.println("If you answer this question correctly you can earn back an oxen:");
+                    System.out.println("What is your favorite book series? Remember to answer in all caps!");
+                    String ans  = temp.nextLine();
+                    if(ans.equals("TWILIGHT")){person.oxen++;}
+                    else{System.out.println("WRONG, IT'S TWILIGHT!");}
                 }
-
+                //deal with negatives
                 if (person.oxen < 0) {
                     person.oxen = 0;
                 }
@@ -78,7 +92,7 @@ class Trail {
                     person.money -= moneyFound;
                     System.out.println("You were robbed... sorry about that. (You lost $" + moneyFound + ")");
                 } else {
-                    System.out.println("You've gone bankrupt! Not just in this game, but in real life dummies. The Volturi have seized all your assets, so when you leave this game you will be completely broke!");
+                    System.out.println("You've lost all your money!");
                     person.money = 0;
                 }
             } else {
@@ -95,6 +109,10 @@ class Trail {
         }
     }
 
+    /**
+     * Kills a person unless they are dead already
+     * @param person - wagon member
+     */
     public void KillAPerson(Person person) {
         Random random = new Random();
 
@@ -112,7 +130,10 @@ class Trail {
         }
     }
 
-
+    /**
+     * First Option - Continuing to next stop, storyline for events that happen
+     * @param person - leader
+     */
     public void NextStop(Person person) {
         System.out.println("\n");
         PrintStats(person);
@@ -140,6 +161,10 @@ class Trail {
         System.out.println("\n");
     }
 
+    /**
+     * Prints game stats for user
+     * @param person
+     */
     public void PrintStats(Person person) {
         System.out.println("Round Stats:");
         System.out.println("Number of days on the Trail: " + TotalDays);
@@ -151,6 +176,12 @@ class Trail {
         System.out.println("Active Companions: " + person.GetActiveCompanions());
 
     }
+
+    /**
+     * Second Option - Hunting
+     * Uses trivia to reward user with food
+     * @param person - leader
+     */
 
     public void Hunt(Person person) {
         int foodHunted = GenerateRandomNumber(5, 200);
@@ -231,7 +262,7 @@ class Trail {
                     "&&$$$$$$$XXXXXXXXxxxxxxXXXXXXxxxxxxxxxxxxxxxxxxXXXX$$$&$$$$$$$&&&");
             System.out.println("You go hunting and collect " + foodHunted + " liters of blood");
             int currentFood = person.food + foodHunted;
-
+            //limits food
             if (currentFood > 600) {
                 System.out.println("You can only fit 600 liters of blood in your wagon.");
                 person.food = 600;
@@ -306,6 +337,11 @@ class Trail {
         return randomNumber_int;
     }
 
+    /**
+     * Used for gameplay which is just displaying the choices
+     * @param person
+     * @return recursive - ensures proper input
+     */
     public void DisplayChoices(Person person) {
         Scanner scanner = new Scanner(System.in);
 

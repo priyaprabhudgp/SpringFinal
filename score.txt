@@ -37,3 +37,13 @@ Vampires alive:
 Amount of Food in the Wagon: 0
 Number of Oxen: 1
 
+Total number of Days on the Trail: 21
+Vampires alive: 
+Amount of Food in the Wagon: 0
+Number of Oxen: 1
+
+Total number of Days on the Trail: 14
+Vampires alive:  Edward Bella Carlisle Alice Jasper Rosalie Emmett
+Amount of Food in the Wagon: 85
+Number of Oxen: 13
+
