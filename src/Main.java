@@ -1,5 +1,4 @@
-import java.io.File;
-import java.io.FileNotFoundException;
+
 import java.io.PrintWriter;
 import java.util.Scanner;
 import java.io.FileWriter;
@@ -31,11 +30,18 @@ public class Main
         {
             trail.DisplayChoices(leader);
 
+            if(leader.GetActiveCompanions()==null){
+                System.out.println("You lost all companions and fails this game!");
+
+
+            }
+
             if(trail.Locations[trail.CurrentStop] == "Volterra, Italy")
             {
-                System.out.println("Congratulations!");
+                System.out.println("Congratulations! You guys won under "+leader.name+"'s lead!");
+
                 System.out.println(leader.name + " "+leader.GetActiveCompanions());
-                System.out.println("You've completed the Twilight Trail.");
+                System.out.println("You've completed the Twilight Trail and rescued Renesmee.");
                 System.out.println("Total number of Days on the Trail: " + trail.TotalDays);
                 System.out.println("Amount of Food in the Wagon: " + leader.food);
                 System.out.println("Number of Oxen: " + leader.oxen);
@@ -49,6 +55,7 @@ public class Main
                      PrintWriter pw = new PrintWriter(fw)) {
 
                     pw.println("Total number of Days on the Trail: " + trail.TotalDays);
+                    pw.println("Vampires alive: "+leader.GetActiveCompanions());
                     pw.println("Amount of Food in the Wagon: " + leader.food);
                     pw.println("Number of Oxen: " + leader.oxen);
                     pw.println();
@@ -73,16 +80,18 @@ public class Main
 
 
     }
-
+/**
+ * inheritance - returns Person subclasses
+ */
     public static Person choosePerson()
     {
         int choice;
         //System.out.println("Many Kinds of People Made the Trip to Oregon");
-        System.out.println("You May:");
-        System.out.println("1.) Be a Banker in Boston");
-        System.out.println("2.) Be a Carpenter from Ohio");
-        System.out.println("3.) Be a Farmer from Illinois");
-        System.out.println("Please enter your choice:");
+        System.out.println("Who will you travel as?");
+        System.out.println("1.)Bankers from Boston");
+        System.out.println("2.)Carpenters from Ohio");
+        System.out.println("3.)Farmers from Illinois");
+        System.out.println("Please enter your choice as a number:");
         choice = scanner.nextInt();
 
 

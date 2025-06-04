@@ -55,12 +55,12 @@ class Trail {
         {
             if (random.nextInt(4) % 2 == 0) {
                 int foundOxen = GenerateRandomNumber(2, 4);
-                System.out.println("You find " + foundOxen + " friendly vampire clans. They give you some live oxen for emergency situations. How lucky...");
+                System.out.println("You find " + foundOxen + " friendly vampire clans. They give you some oxen. How lucky...");
                 person.oxen += foundOxen;
             } else {
                 if (person.oxen > 0) {
                     person.oxen -= GenerateRandomNumber(1, 3);
-                    System.out.println("You stepped on another vampire clan's hunting ground! Oh my you have to give up some oxen.");
+                    System.out.println("You stepped on another vampire clan's hunting ground, and they saw Edward and Bella trying to recreate the Spider-Monkey Scene. Oh my you have to give up some oxen.");
                 } else {
                     System.out.println("You think about your emergency supply oxen.");
                 }
@@ -78,8 +78,7 @@ class Trail {
                     person.money -= moneyFound;
                     System.out.println("You were robbed... sorry about that. (You lost $" + moneyFound + ")");
                 } else {
-                    System.out.println("""
-                            You've gone bankrupt! Not just in this game, but in real life dummies. The Volturi have seized all your assets, so when you leave this game you will be completely broke!""");
+                    System.out.println("You've gone bankrupt! Not just in this game, but in real life dummies. The Volturi have seized all your assets, so when you leave this game you will be completely broke!");
                     person.money = 0;
                 }
             } else {
@@ -136,7 +135,7 @@ class Trail {
         }
 
         System.out.println("You travel " + daysToTravel + " days to reach the next stop.");
-        System.out.println("Your party consumes " + foodConsumed + "lbs of food along the way. You have " + person.food + "lbs. of food left.");
+        System.out.println("Your party consumes " + foodConsumed + "liters of blood along the way. You have " + person.food + "liters of blood left.");
 
         System.out.println("\n");
     }
@@ -154,16 +153,146 @@ class Trail {
     }
 
     public void Hunt(Person person) {
-        int foodHunted = GenerateRandomNumber(1, 200);
+        int foodHunted = GenerateRandomNumber(5, 200);
+        Scanner in = new Scanner(System.in);
+        System.out.println("\n\nTo hunt you must do trivia!!!!");
 
-        System.out.println("You go hunting and collect " + foodHunted + " liters of blood");
-        int currentFood = person.food + foodHunted;
+        String[] questions = {"In what class does Bella sit next to Edward on the first day of school?",
+                "How do the Cullens differentiate themselves from other vampires?",
+                "How many (adopted) Cullen children are there?",
+                "The Denali vampires shared what with the Cullens?",
+                "Can Edward read Bella's mind?",
+                "What do vampires really need in order to play baseball?",
+                "How did Stephenie Meyer come up with the idea for the \"Twilight\" books?",
+                "Where did Bella have to hide out from James in \"Twilight?\"",
+                "What part of Bella is bitten by James, prompting Edward to heroically suck the poison out?",
+                "How does Edward attempt to kill himself in \"New Moon?\"",
+                "How do shape-shifters, like Jacob, find their soulmates?",
+                "What age does Bella get married at?",
+                "What is the name of the other peaceful half-human, half-vampire that proves that Renesmee isn't a threat?"};
 
-        if (currentFood > 600) {
-            System.out.println("You can only fit 600 liters of blood in your wagon.");
-            person.food = 600;
+        String[] answers = {"BIOLOGY",
+                "VEGETARIAN",
+                "FIVE",
+                "VEGETARIANISM",
+                "NO",
+                "THUNDER",
+                "DREAM",
+                "ARIZONA",
+                "WRIST",
+                "SUNSHINE",
+                "IMPRINTING",
+                "NINETEEN",
+                "NAHUEL"};
+
+
+        int r = GenerateRandomNumber(0, 12);
+        System.out.println("\nThe answer will will be ONE WORD in ALL CAPS!!\n");
+        System.out.println(questions[r]);
+        String response = in.nextLine();
+        if(response.equals(answers[r])){
+            System.out.println("                                                                      ,----,\n" +
+                    "              ,----..                                               ,/   .`|\n" +
+                    "  ,----..    /   /   \\ ,-.----.  ,-.----.      ,---,. ,----..     ,`   .'  :\n" +
+                    " /   /   \\  /   .     :\\    /  \\ \\    /  \\   ,'  .' |/   /   \\  ;    ;     /\n" +
+                    "|   :     :.   /   ;.  ;   :    \\;   :    \\,---.'   |   :     .'___,/    ,' \n" +
+                    ".   |  ;. .   ;   /  ` |   | .\\ :|   | .\\ :|   |   ..   |  ;. |    :     |  \n" +
+                    ".   ; /--`;   |  ; \\ ; .   : |: |.   : |: |:   :  |-.   ; /--`;    |.';  ;  \n" +
+                    ";   | ;   |   :  | ; | |   |  \\ :|   |  \\ ::   |  ;/;   | ;   `----'  |  |  \n" +
+                    "|   : |   .   |  ' ' ' |   : .  /|   : .  /|   :   .|   : |       '   :  ;  \n" +
+                    ".   | '___'   ;  \\; /  ;   | |  \\;   | |  \\|   |  |-.   | '___    |   |  '  \n" +
+                    "'   ; : .'|\\   \\  ',  /|   | ;\\  |   | ;\\  '   :  ;/'   ; : .'|   '   :  |  \n" +
+                    "'   | '/  : ;   :    / :   ' | \\.:   ' | \\.|   |    '   | '/  :   ;   |.'   \n" +
+                    "|   :    /   \\   \\ .'  :   : :-' :   : :-' |   :   .|   :    /    '---'     \n" +
+                    " \\   \\ .'     `---`    |   |.'   |   |.'   |   | ,'  \\   \\ .'               \n" +
+                    "  `---`                `---'     `---'     `----'     `---`                 ");
+            System.out.println("$$$XXxxxXX$$$$$$$X$$$$$$$$$$$$$$XXXXXX$&&&&&$&$$&&&&&$XXXXX$$&&&&\n" +
+                    "&&$Xxx+xxXX$$$XXXX$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$&&&&&$$&&$$\n" +
+                    "&$XXx+++xxX$$$XX$$$$$$$$$XXXXXX$$$XXXXXXXXXXXXX$$$$$$X$$$$$$$$&$$\n" +
+                    "XXXx++++xxX$$XXX$$$XXxxxxxxx++x    :&++++++++++++++++xXX$$$$X$$$$\n" +
+                    "+xXx++;+xxXXXXXXX$$Xxx+++++++$+x+xx+$&++++++++++++xxxxx+X$$$X$$$X\n" +
+                    "xxxx+;;;;+xXXXXXX$Xxx++++++++$+:+; .x&++++++++++xx..+&$+X$$$X$$$X\n" +
+                    "+Xx++;;.  :+XXXXXXXxxxx++++++x+;+x;;+$x+++++++++&x:;;$&xxX$$X$$XX\n" +
+                    "+Xx++++xx+x++XXxXXXX+xxxxxxxxx$+X+:.;$$xxxxxxxxx&++:;X&$xX$$xX$XX\n" +
+                    "XXx+;;+;;x;+;XXxXXXXxx+xxxxxxx:    x:;X$xxxxxxxX&&xxx$&&xX$$xX$XX\n" +
+                    "XXx+;::;++x+:xXxXXXxxx;;++xxxX;   .+:     :+xxX$&X   x&&$XX$xXXXx\n" +
+                    "xXx++;;... ;;xXxxXXx+X;;++;;:.  :       ...;XXX$&;  :+xxxxxx+xXXx\n" +
+                    "xX;......  ;xxXxxXXx+$;;+;;::       ....:..:+Xxx  . .xx+;xx++xXXx\n" +
+                    "X;...:.:;+..:xXxxXXX+X:;+;+;:      ..::;X::.;xXx:  .:x+;+XX+xxXXx\n" +
+                    "x..::x:..x:  :xxxXXX+X;;;:++;:  .+;:::;+$x;.:;xx:+:.:xx+xX$X;+xXX\n" +
+                    ":...+X+;;;+: ;xx+XXx+X:;::++;+;+: .::;;+X&x+::;X... :xxxxX$xX&&$X\n" +
+                    "x;;+$X++:;;+;.xx+XXx;X::::xx;;;...:;:;;+X$Xx;:.;+:; .XxxxX&xxX&$X\n" +
+                    "+;x$$Xx+;++:;$Xx+XXX;x;;;;X+x;+:;++::;;xX$X$X+.:;+x.:xxxxX$x$$XXX\n" +
+                    ";+x$$Xx++xx::+Xx+XXX;x:.:+X++X;::.:+;;;+XXXXXx:.:;x;;xXxXX&$xxXXX\n" +
+                    "+xxXXXx++X+;++Xx;XXX;;..+X;++x;::;;;;;;+X$&&&$X;..;;;XXXXX$$xxX$$\n" +
+                    "xXXXxxXx+X+;xx$x;XXx...;X+;x$+;:;+x+;;;+x$&&&$$x;:.:;$$XXX$$Xx$$&\n" +
+                    "X$Xxxxxxxx+;:x$x;XX:.:;xx++x$x+;:.:+::;+xx$&&&$$x+;:.+XXXX$$$x$$&\n" +
+                    "$$$Xxxxx++;;;XX:;;xx;++:+;++++::...:;;;::;;+++;;:;+++;:+++++++xXX\n" +
+                    "&&$$$$$$$XXXXXXXXxxxxxxXXXXXXxxxxxxxxxxxxxxxxxxXXXX$$$&$$$$$$$&&&");
+            System.out.println("You go hunting and collect " + foodHunted + " liters of blood");
+            int currentFood = person.food + foodHunted;
+
+            if (currentFood > 600) {
+                System.out.println("You can only fit 600 liters of blood in your wagon.");
+                person.food = 600;
+            } else {
+                person.food += foodHunted;
+            }
         } else {
-            person.food += foodHunted;
+            System.out.println("Ha! You didn't catch any prey!");
+            System.out.println(" _____ ____  ______        ___    ____  ____  \n" +
+                    "| ____/ ___|/ ___\\ \\      / / \\  |  _ \\|  _ \\ \n" +
+                    "|  _|| |  _| |  _ \\ \\ /\\ / / _ \\ | |_) | | | |\n" +
+                    "| |__| |_| | |_| | \\ V  V / ___ \\|  _ <| |_| |\n" +
+                    "|_____\\____|\\____|  \\_/\\_/_/   \\_|_| \\_|____/ ");
+            System.out.println("                                                                                        \n" +
+                    " ************************************************************************************** \n" +
+                    " ************************************************************************************** \n" +
+                    " **********************************++=++++++++++++++++********************************* \n" +
+                    " *******************************+++*@@@@@%%%%%####%%@%++******************************* \n" +
+                    " *****************************++*@%=-:--=====+=++==--=@#++***************************** \n" +
+                    " **************************+++@@=-=+#####*#****######===@@+++************************** \n" +
+                    " ************************++*@+---##*##**************#%*---#@++************************* \n" +
+                    " ***********************++@*--+@%##+##*********#*****##%@=--@++************************ \n" +
+                    " **********************+*@--=@#******#******************#%*--@++*********************** \n" +
+                    " *********************+%%-:%@#***************+**********##@*-+@+*********************** \n" +
+                    " ********************++@=:@%#****#*******####*****#********@+-+%+********************** \n" +
+                    " *******************++@=:*@**+*+-.   :--=+******+++--=-=+*##@-=@#+********************* \n" +
+                    " *******************+%+-+@#**-     .      =+*+=.           =#%.-%%+******************** \n" +
+                    " ******************+*@-:@#*+= @@@@@@@@@@@@.-++=*@@@@@@@@@@@ +%@:-##+******************* \n" +
+                    " ******************+@--#@**+#@@@:       =+--=++@@.       :@@+*@@:-@*+****************** \n" +
+                    " ******************+@-:@#***++ @@@=@@@%@@@@@#+=-+@@@@@@ @@ -+**@%:=@+****************** \n" +
+                    " *****************++@-.@**+**#*%@@@%@%@@@@@+=+*+=@@@+@@@: -=***%@.-@+****************** \n" +
+                    " *****************+%#.#@****#*=+++*++#-=+*+=+++++::--  .:=+****#@ -@+****************** \n" +
+                    " *****************=@+.@%*#******+=====+++*#******+==***+*+*****#@+:@******************* \n" +
+                    " *****************=@= @%*#****#*+*++++++%@%##+*****+****#*#*#***@%.##+***************** \n" +
+                    " *****************=@= @#*#************##@.  -==.::*#***+*#*#####@@ ##+***************** \n" +
+                    " *****************=@= @%####*#*********#@@@@==*@@%#*#**##*#*####@*.##+***************** \n" +
+                    " *****************=@* @@*#****##**#***+-*@@@@@@:-=+****#**#*##*#@-:@******************* \n" +
+                    " *****************+#%.+@###************+.    :. -*+*####*##*##*%@ -@+****************** \n" +
+                    " ******************+@: @@##*##****#*#=   .%@@==    :+**#%##*##*@@ -@=****************** \n" +
+                    " ******************+@=.#@######*******@@@@@@@@@@@@@%#*###*####%@::%#+****************** \n" +
+                    " ******************+*@- @@###**####**==@@#*=#%%++*+:******#**#@% -@+******************* \n" +
+                    " *******************+#*. @@#####*#**#*==--:.---:  -=+***####%@@ :@*+******************* \n" +
+                    " ********************+@+. @@#*##*#**##*+=-==+===+***#####*#%@@ .##+******************** \n" +
+                    " ********************++@+. @@@##*##*****+++++*+*+*#**#*###@@@ .%%+********************* \n" +
+                    " *********************++@*. +@@%#########%##############@@@  :@#+********************** \n" +
+                    " ***********************+*@:  @@@%**####*#############@@@-  =@++*********************** \n" +
+                    " ************************+=@=.  +@@@****###********#@@@.  :@#=+************************ \n" +
+                    " *************************+@-=@@#++@@@@%**++++*%@@@@#**%@@=-@+************************* \n" +
+                    " *************************+@-:@@@@@@@@@@@@@@@@@@@@@@@@@@@@-=@=++*********************** \n" +
+                    " ************************+=%+-..%@@@@@%@#%%####%#%@@@@@@.::.=*@************************ \n" +
+                    " ***********************++@%=  :          .-=:=- :         @@ =%+********************** \n" +
+                    " ***********************+@.  @@  #@:  +@. *    #  @@  #@ *@@@ =@+********************** \n" +
+                    " ************************% *@ @@@@ @@@@ @@@@@@ @   @@-@ @@ @@ =@+********************** \n" +
+                    " ***********************+@  @ :+-@ @-:@ @@ @@ @@ @ @@*@ @@ @@ =@+********************** \n" +
+                    " ***********************+@+      @ @* @ @#                    *%+********************** \n" +
+                    " ***********************++*@@@@=          :@@@@@@@@@@@@@@@@@@@#************************ \n" +
+                    " *************************++=++#@@@@@@@@@@*+=================++************************ \n" +
+                    " ******************************++========++******************************************** \n" +
+                    " ************************************************************************************** \n" +
+                    " ************************************************************************************** \n" +
+                    "                                                                                        ");
         }
 
         System.out.println("You now have " + person.food + " liters of blood in the wagon.");
