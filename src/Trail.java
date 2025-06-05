@@ -329,10 +329,17 @@ class Trail {
         System.out.println("You now have " + person.food + " liters of blood in the wagon.");
 
     }
+    /**
+     * Generates random number using the Random class
+     * @param min - lowest value
+     * @param max - hightest value
+     * @return random int betweeen those values inclusive both sides
+     */
+
 
     public int GenerateRandomNumber(int min, int max) {
         Random random = new Random();
-        int randomNumber_int = random.nextInt(max - 1) + min;
+        int randomNumber_int = random.nextInt(max - min +1) + min;
 
         return randomNumber_int;
     }
